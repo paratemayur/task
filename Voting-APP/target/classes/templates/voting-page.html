@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Voting Form</title>
+</head>
+<body>
+
+<h1>Voting Form</h1>
+
+<!--<form th:action="@{/api/v1/voteParty/vote/submit}" method="post">
+    <th:block th:each="voteParty : ${votePartyList}">
+        <label th:for="${'option-' + voteParty.votePartyId}"
+               th:text="${voteParty.partyName}"></label>
+        <input type="radio" th:id="${'option-' + voteParty.votePartyId}" th:name="votePartyId"
+               th:value="${voteParty.votePartyId}" />
+    </th:block>
+    <input type="hidden" name="username" th:value="${username}" />
+    <button type="submit">Vote</button>
+</form>-->
+<form th:action="@{/api/v1/voteParty/vote/submit}" method="post">
+    <th:block th:each="voteParty : ${votePartyList}">
+        <label th:for="${'option-' + voteParty.votePartyId}"
+               th:text="${voteParty.partyName}"></label>
+        <input type="radio" th:id="${'option-' + voteParty.votePartyId}" th:name="votePartyId"
+               th:value="${voteParty.votePartyId}" />
+    </th:block>
+    <input type="hidden" name="username" th:value="${username}" />
+    <button type="submit">Vote</button>
+</form>
+
+<div th:if="${errorMessage}" class="error" th:text="${errorMessage}"></div>
+
+
+</body>
+</html>
